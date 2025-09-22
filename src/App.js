@@ -1,5 +1,6 @@
 import React from 'react';
 import VaultDemo from './components/VaultDemo';
+import LiveVaultDemo from './components/LiveVaultDemo';
 
 function App() {
   return (
@@ -37,8 +38,8 @@ function App() {
           </div>
         </div>
 
-        {/* Vault Demo Section */}
-        <VaultDemo />
+        {/* Live Vault Demo Section */}
+        <LiveVaultDemo />
 
         {/* Project Overview */}
         <div className="bg-white rounded-lg shadow-lg p-6">
