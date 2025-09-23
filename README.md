@@ -1,8 +1,18 @@
-# David Vizena - Kubernetes Security Portfolio Project
+# 🔐 Kubernetes Security with HashiCorp Vault
 
-**Project 4: Kubernetes Security with HashiCorp Vault**
+**Project 4: Enterprise Secret Management & Security**
 
 A comprehensive demonstration of Kubernetes security best practices, featuring HashiCorp Vault for secrets management, RBAC, and secure application deployment.
+
+## 🌐 Live Demo
+
+**🔗 [View Live Demo](https://k8s-security-production.up.railway.app)**
+
+Interactive demonstration showcasing:
+- ✅ **Secret Management**: HashiCorp Vault integration
+- ✅ **Security Features**: Encryption, access control, audit logging
+- ✅ **Real-time Demo**: Click "Refresh Secrets" and "Rotate Security Keys"
+- ✅ **Professional UI**: Modern React interface with Tailwind CSS
 
 ## 🔐 Security Features
 
@@ -11,144 +21,78 @@ A comprehensive demonstration of Kubernetes security best practices, featuring H
 - **Encrypted Secrets**: Secure storage and transmission of sensitive data
 - **Network Policies**: Micro-segmentation and traffic control
 - **Audit Logging**: Comprehensive security event tracking
-- **React Frontend**: Modern, responsive UI demonstrating secret retrieval
-- **Docker Containerization**: Multi-stage build for optimized production image
-- **Cloud Deployment**: Ready for DigitalOcean, GCP, and AWS
-
-## 🌐 Live Demo (FREE Options)
-
-**🆓 FREE Deployment Options**:
-- **Railway**: [5-Minute Setup](RAILWAY_DEPLOYMENT.md) (100% FREE - Recommended)
-- **Vercel**: [React Frontend](cloud/vercel-deploy.sh) (Completely free)
-- **GitHub Pages**: [Static Hosting](cloud/github-pages-deploy.sh) (Completely free)
-- **Google Cloud**: [Free Deploy Guide](cloud/free-deploy.md#option-1-google-cloud-platform-recommended) ($300 free credits)
-
-**Demo Features**:
-- **Live Application**: React app with Vault integration
-- **Vault UI**: HashiCorp Vault web interface (GCP only)
-- **Secret Management**: Real-time secret retrieval and display
-- **Security Policies**: RBAC and network policies in action
-- **Kubernetes Dashboard**: Pod status and resource monitoring (GCP only)
+- **Secret Rotation**: Dynamic key rotation without downtime
 
 ## 🛠️ Tech Stack
 
 - **Frontend**: React 18, Tailwind CSS
 - **Containerization**: Docker, Nginx
 - **Orchestration**: Kubernetes
-- **Secrets Management**: HashiCorp Vault 1.15.2
+- **Secrets Management**: HashiCorp Vault
 - **Security**: RBAC, Network Policies, Service Accounts
-- **Networking**: LoadBalancer Service, Ingress
-- **Cloud Platforms**: DigitalOcean, GCP, AWS
+- **Deployment**: Railway (Cloud hosting)
 
-## 📦 Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
-
 - Node.js 18+
 - Docker
-- Kubernetes cluster (local or cloud)
-- kubectl configured
+- Kubernetes cluster (optional)
 
 ### Local Development
+```bash
+# Install dependencies
+npm install
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+# Start development server
+npm start
 
-2. **Start development server**:
-   ```bash
-   npm start
-   ```
-
-3. **Build for production**:
-   ```bash
-   npm run build
-   ```
+# Build for production
+npm run build
+```
 
 ### Docker Deployment
+```bash
+# Build Docker image
+docker build -t k8s-security .
 
-1. **Build Docker image**:
-   ```bash
-   docker build -t davidvizena/hello-world:latest .
-   ```
-
-2. **Run locally**:
-   ```bash
-   docker run -p 8080:8080 davidvizena/hello-world:latest
-   ```
+# Run locally
+docker run -p 8080:8080 k8s-security
+```
 
 ### Kubernetes Deployment
+```bash
+# Deploy to Kubernetes
+kubectl apply -f k8s/
 
-1. **Start minikube cluster**:
-   ```bash
-   minikube start
-   ```
-
-2. **Deploy to Kubernetes**:
-   ```bash
-   ./deploy.sh
-   ```
-
-3. **Or deploy manually**:
-   ```bash
-   kubectl apply -f k8s/
-   ```
-
-4. **Get service URL**:
-   ```bash
-   minikube service david-vizena-service -n david-vizena
-   ```
-
-## 🌐 Free Hosting Options
-
-### Option 1: Railway
-- Connect your GitHub repo to Railway
-- Automatic deployments on push
-- Free tier available
-- Custom domain support
-
-### Option 2: Render
-- Connect GitHub repo
-- Free tier with custom domains
-- Automatic SSL certificates
-
-### Option 3: Vercel
-- Perfect for React apps
-- Free tier available
-- Automatic deployments
+# Get service URL
+kubectl get service k8s-security-service -n k8s-security
+```
 
 ## 📁 Project Structure
 
 ```
 ├── src/
-│   ├── App.js          # Main React component
-│   ├── index.js        # React entry point
-│   └── index.css       # Tailwind CSS imports
-├── public/
-│   └── index.html      # HTML template
+│   ├── App.js              # Main React component
+│   ├── components/
+│   │   └── LiveVaultDemo.js # Interactive Vault demo
+│   ├── index.js            # React entry point
+│   └── index.css           # Tailwind CSS imports
 ├── k8s/
-│   ├── namespace.yaml  # Kubernetes namespace
-│   ├── deployment.yaml # App deployment
-│   ├── service.yaml    # LoadBalancer service
-│   └── network-policy.yaml # Network policies
-├── Dockerfile          # Multi-stage Docker build
-├── nginx.conf          # Nginx configuration
-└── deploy.sh           # Deployment script
+│   ├── namespace.yaml      # Kubernetes namespace
+│   ├── deployment.yaml     # App deployment
+│   ├── service.yaml        # LoadBalancer service
+│   ├── network-policy.yaml # Network policies
+│   └── vault-deployment.yaml # Vault deployment
+├── public/
+│   └── index.html          # HTML template
+├── Dockerfile              # Multi-stage Docker build
+├── nginx.conf              # Nginx configuration
+├── railway.json            # Railway deployment config
+└── deploy.sh               # Deployment script
 ```
 
-## 🔧 Configuration
-
-### Environment Variables
-- `PORT`: Application port (default: 8080)
-
-### Kubernetes Resources
-- **CPU**: 50m request, 100m limit
-- **Memory**: 64Mi request, 128Mi limit
-- **Replicas**: 2 (for high availability)
-
-
-## 🚀 Multi-Cloud Portfolio Series
+## 🎯 Portfolio Series
 
 This is **Project 4** of a 4-project portfolio series demonstrating **cross-platform SRE expertise**:
 
@@ -170,14 +114,48 @@ This is **Project 4** of a 4-project portfolio series demonstrating **cross-plat
 - ✅ Automated Testing
 - ✅ GitOps Workflows
 
-### **Project 4: Security & Secrets Management** (Google Cloud) ⭐
+### **Project 4: Security & Secrets Management** (Railway) ⭐
 - ✅ HashiCorp Vault Integration
-- ✅ GCP GKE Deployment
+- ✅ Interactive Security Demo
 - ✅ RBAC & Access Control
 - ✅ Encryption & Data Protection
 - ✅ Multi-Cloud Security Expertise
 
 **🎯 Strategic Approach**: Each project uses different cloud platforms to demonstrate **cloud-agnostic** SRE skills that employers value.
+
+## 🔧 Configuration
+
+### Environment Variables
+- `NODE_ENV`: Application environment (development/production)
+- `PORT`: Application port (default: 8080)
+
+### Kubernetes Resources
+- **CPU**: 50m request, 100m limit
+- **Memory**: 64Mi request, 128Mi limit
+- **Replicas**: 2 (for high availability)
+
+## 📊 Demo Features
+
+### **Interactive Vault Simulation**
+- **Secret Display**: Shows app config, security keys, database credentials
+- **Secret Rotation**: Demonstrates key rotation without downtime
+- **Access Control**: Simulates RBAC and permission management
+- **Audit Logging**: Shows security event tracking
+
+### **Real-World Use Cases**
+- **Database Credentials**: Secure connection strings
+- **API Keys**: Third-party service authentication
+- **TLS Certificates**: SSL/TLS certificate management
+- **Application Secrets**: JWT signing keys, encryption keys
+
+## 🛡️ Security Best Practices
+
+- **Encryption at Rest**: All secrets encrypted in storage
+- **Access Control**: Role-based permissions (RBAC)
+- **Audit Logging**: Every access logged and monitored
+- **Secret Rotation**: Keys rotated without downtime
+- **Dynamic Secrets**: Short-lived credentials for databases
+- **Kubernetes Integration**: Automatic service account authentication
 
 ## 📝 License
 
@@ -186,4 +164,5 @@ MIT License - feel free to use this as a template for your own portfolio project
 ---
 
 **Built with ❤️ by David Vizena**
-# Test update
+
+*Demonstrating modern DevOps, security, and cloud-native practices for enterprise environments.*
